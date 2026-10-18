@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Instructions — Sequence Sketch Local</title>
+<style>body{margin:0;background:#f3f5f8;color:#243247;font:15px/1.8 system-ui,sans-serif}main{max-width:900px;margin:32px auto;padding:32px;background:white;border-radius:10px}h1{font-size:28px}h2{margin-top:32px;font-size:21px}a{color:#2465a5}pre{padding:16px;background:#f3f6fa;overflow:auto;border-radius:6px}table{width:100%;border-collapse:collapse}th,td{padding:10px;border:1px solid #dce3eb;text-align:left}code{color:#275c8b}@media(max-width:650px){main{margin:0;padding:18px}table{font-size:13px}}</style>
+<main><h1>Sequence Sketch Local — Instructions</h1><p>テキストとマウスの両方で編集できる、ローカルで完結するシーケンス図エディターです。SequenceDiagram.org風の構文に一部対応した独立した試作品です。全構文互換ではありません。</p><p><a href="sequence-editor.html">エディターを開く</a> ／ <a href="#syntax">構文</a> ／ <a href="#privacy">Privacy Policy</a> ／ <a href="https://github.com/su5filed/sequence-sketch-local" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+<h2>起動と保存</h2><p>sequence-editor.htmlをEdgeまたはChromeで開いてください。サーバーやインストールは不要です。作図処理はブラウザ内で動きます。この説明書も同じフォルダーに置くとオフラインで読めます。</p><p>メニューは「追加」「SVG保存」「PNG保存」「拡大」「縮小」です。「追加」は未使用の識別名で参加者を追加します。画像保存では対応ブラウザの保存ダイアログを使用します。表示倍率は25～300％です。</p><p><strong>ソースの自動保存はありません。</strong>再読み込み・終了の前に、左側のテキストをコピーして保管してください。次回は左側へ貼り付けます。</p>
+<h2>マウス操作</h2><table><tr><th>操作</th><th>結果</th></tr><tr><td>生命線から別の生命線へドラッグ</td><td>コメント入力後に矢印を追加。Shiftで破線。</td></tr><tr><td>同じ生命線上で下へドラッグ</td><td>自己呼び出しを追加。</td></tr><tr><td>図形をクリック</td><td>赤く強調し、対応するソース行を選択。</td></tr><tr><td>文字や図形をダブルクリック</td><td>編集ダイアログを表示。Enterで改行、Ctrl＋Enterで更新。</td></tr><tr><td>参加者の箱を左右へドラッグ</td><td>参加者を並べ替え。</td></tr><tr><td>矢印の中央を上下へドラッグ</td><td>ソース行を移動して順序を変更。</td></tr><tr><td>矢印の端を参加者へドラッグ</td><td>送信元・送信先を変更。つかみの四角は透明。</td></tr><tr><td>noteの中央をドラッグ</td><td>単独noteの配置や上下の順序を変更。</td></tr><tr><td>複数参加者のnoteの左右端をドラッグ</td><td>対象の参加者を変更。</td></tr><tr><td>altの上端・下端を上下へドラッグ</td><td>囲む範囲とalt・end行の位置を変更。</td></tr><tr><td>矢印・noteを選択してDelete</td><td>対象を削除。</td></tr><tr><td>Ctrl＋Z／Ctrl＋Shift＋Z</td><td>元に戻す／やり直す。</td></tr></table><p>下へスクロールすると、参加者の箱を上端に固定表示します。固定表示した箱は編集できません。画像出力には固定表示を含めません。</p>
+<h2>右クリックメニュー</h2><ul><li><strong>note</strong>：left of、right of、over、複数参加者のover。</li><li><strong>activation</strong>：activate、deactivate、deactivateafter。</li><li><strong>fragment → alt</strong>：条件を入力してaltとendの空枠を追加。</li><li><strong>fragment → else</strong>：alt枠内だけ表示。条件を入力して点線の分岐を追加。入れ子では最も内側の枠が対象。</li><li><strong>divider</strong>：文字入りの区切り線を追加。</li></ul>
+<h2 id="syntax">対応する主な構文</h2><pre>title サンプル
+participant a
+participant "表示名\n２行目" as b
+
+a-&gt;b:リクエスト
+activate b
+b--&gt;a:応答
+deactivate b
+
+note left of a:左の注釈
+note right of a:右の注釈
+note over a:注釈
+note over a,b:複数参加者の注釈\n２行目
+
+alt 成功
+a-&gt;b:通常処理
+else 失敗
+b-&gt;a:エラー
+end
+
+==区切り==
+
+a-&gt;a:自己呼び出し
+activate a
+deactivateafter a
+
+[-&gt;a:左の外部から
+a&lt;-]:右の外部から
+a-&gt;]:右の外部へ
+
+# これはコメント
+// これもコメント</pre><p>participantのaliasはソースで使う識別名、long nameは図に表示する名前です。大文字・小文字を区別します。表示名やコメントの改行はソース上では <code>\n</code> と書きます。</p><p>実線・破線、左右方向の矢印、開いた矢印（<code>-&gt;&gt;</code>など）、自己呼び出しに対応します。activateは直前要素の終了位置から開始し、deactivateは直前要素の位置で終了、deactivateafterは少し下で終了します。終了指定のない実行区間は図の下端まで表示します。</p><p>左側には行番号を表示します。構文エラーは赤い×で示し、マウスを合わせると理由、クリックすると対象行を表示します。box・alt以外のfragment・space・装飾構文などは未対応です。</p>
+<h2 id="privacy">Privacy Policy</h2><p>更新日：2026年10月18日</p><p>本アプリは入力したソーステキスト、参加者名、コメント、図をブラウザ内で処理し、開発者や外部サーバーへ送信・収集しません。アクセス解析、広告、追跡用Cookie、外部CDNは使用しません。</p><p>編集内容はページを開いている間のメモリ上で扱い、自動保存やCookie・localStorageへの保存は行いません。SVG・PNGは利用者が指定した保存先へ書き込みます。ローカルファイルでの作図にネット接続は不要です。</p><p>外部リンクを開くと、そのリンク先への通信が発生し、そのサービスのプライバシーポリシーが適用されます。GitHub／GitHub Pagesで閲覧する際のアクセス情報はGitHubが取り扱います。GitHub Pagesはセキュリティ目的でIPアドレスを記録すると説明しています。アプリが図のデータを収集することとは別です。</p><p><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection" target="_blank" rel="noopener noreferrer">GitHub Pagesのデータ収集</a> ／ <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub Privacy Statement</a></p><p>お問い合わせは <a href="https://github.com/su5filed/sequence-sketch-local/issues" target="_blank" rel="noopener noreferrer">プロジェクトのIssues</a> へ。公開Issueには機密情報や個人情報を含めないでください。機能やデータの取り扱いを変更した場合は、この説明も更新します。</p></main></html>
