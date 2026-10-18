@@ -1,5 +1,5 @@
 Sequence Sketch Local
-ローカルで完結するシーケンス図エディター（図のデータを外部へ送信・収集しません）
+ローカルで完結するシーケンス図エディター（図のデータを外部へ送信・収集していません）
 
 ■ 起動
 ZIPを展開し、sequence-editor.html をEdgeやChromeで開いてください。
@@ -24,8 +24,8 @@ ZIPを展開し、sequence-editor.html をEdgeやChromeで開いてください�
 ・「元に戻す」「やり直す」に対応しています。
 
 ■ 保存
-メニューは「追加」「SVG保存」「PNG保存」「拡大」「縮小」です。
-「追加」で未使用の識別名のparticipantを1つ追加します。
+メニューは「Add」「Save → SVG／PNG」「Zoom In」「Zoom Out」です。
+「Add」で未使用の識別名のparticipantを1つ追加します。
 SVGまたはPNGとして図を保存できます。画像出力は表示倍率に依存しません。
 画像保存ではOS標準の保存ダイアログで保存先とファイル名を選択します。
 この保存機能は対応するデスクトップ版EdgeまたはChromeで使用してください。

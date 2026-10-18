@@ -18,7 +18,7 @@
 
 ## 使い方
 
-1. ファイル一式をダウンロードして展開します。
+1. [sequence-editor.zipをダウンロード](https://github.com/su5filed/sequence-sketch-local/raw/refs/heads/main/sequence-editor.zip)して展開します。
 2. `index.html`（配布ファイルが `sequence-editor.html` の場合はそちら）をEdgeまたはChromeで開きます。
 3. 左側へソースを入力するか、右側の生命線をドラッグして矢印を追加します。注釈や分岐は右クリックメニューから追加できます。
 
