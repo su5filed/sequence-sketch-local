@@ -1,4 +1,4 @@
-# Sequence Sketch Local
+# [Sequence Sketch Local](https://su5filed.github.io/sequence-sketch-local/sequence-editor.html)
 
 ![テキストとシーケンス図を並べて編集するSequence Sketch Localの画面](screenshot.png)
 
