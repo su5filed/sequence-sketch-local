@@ -26,11 +26,21 @@
 
 **ソースの自動保存はありません。** ページを閉じたり再読み込みしたりする前に、左側のテキストをコピーして保管してください。画像の保存先指定には、対応するデスクトップ版EdgeまたはChromeが必要です。
 
-## 開発について
+## 開発について / Contributing
 
-現在は試作品です。
-個人的に、最低限必要と思われるのを実装しています。
-SequenceDiagram.orgの全機能・全構文には対応していません。バグ報告や機能提案、改善のPull Requestを歓迎します。
+現在は試作品です。個人的に必要と感じた基本機能を中心に実装しており、SequenceDiagram.orgの全機能・全構文には対応していません。
+
+改善への参加を歓迎します。自由にForkして修正・コミットし、Pull Requestをお送りください。バグ報告や機能提案も歓迎します。
+
+This project is a prototype implementing the basic features I personally need. It does not support all features or syntax of SequenceDiagram.org.
+
+Contributions are welcome! Feel free to fork the repository, make changes, commit them to your fork, and submit a pull request. Bug reports and feature suggestions are also welcome.
+
+## ライセンス / License
+
+本プロジェクトは [MIT License](LICENSE) で公開しています。商用利用、改変、再配布、販売が可能です。配布時には著作権表示とライセンス文を保持してください。本ソフトウェアは現状のまま提供され、保証はありません。
+
+This project is released under the [MIT License](LICENSE). Commercial use, modification, redistribution, and sale are permitted. Redistributions must retain the copyright notice and license text. The software is provided “as is,” without warranty.
 
 ## プライバシー
 
